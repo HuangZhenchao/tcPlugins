@@ -1,0 +1,28 @@
+这个帮助文件是关于为文件管理器Total Command编写打包程序插件的，可以在www.ghisler.com上找到。它描述了您需要实现的功能，以添加一个特定的包装程序到总指挥官。您还应该查看可用的示例打包程序(带源代码)，它们可以让您对插件编程有一些了解。这里有Microsoft Visual C++和Delphi的示例。
+
+WCX只不过是一个重命名为*.WCX的32位Windows DLL，它支持一系列特定函数。Total Commander在运行时使用LoadLibrary()动态加载此库，并使用GetProcAddress()加载所有可用函数。这意味着并非这里描述的所有功能都必须实现(见下文)。所有函数都使用STDCALL调用约定，没有C++名称损坏(见下文)，与Windows中的大多数标准系统库完全一样。
+
+一个只读插件所需的最小函数是:
+OpenArchive 告知插件应打开哪个档案以列出或读取。
+ReadHeader 只要该插件不返回任何错误，就会调用这个函数——该插件必须在每次调用的存档中返回一个文件名。
+ProcessFile 紧跟在ReadHeader之后调用。通知插件提取、测试或跳过此文件。
+CloseArchive 在ReadHeader返回错误后调用。
+SetChangeVolProc 设置回调函数以向用户请求更改磁盘。
+SetProcessDataProc设置一个回调函数以提供反馈，并允许中止包或解包操作。
+
+
+以下所有功能都是可选的。如果要支持它们，还需要实现GetPackerCaps，以告诉Total Commander支持哪些函数。如果GetPackerCaps不可用，Total Commander假定插件只支持解包。即使使用只读插件，您也可能希望实现GetPackerCaps并返回PK_CAPS_SEARCHTEXT，以允许Total Commander在这种类型的存档中搜索文本。
+
+第一组允许创建或修改现有存档：
+PackFiles 	通知插件将文件列表打包到给定的存档中。如果存档文件存在，插件应该将文件添加到该存档文件中。Total 		Command将要求用户进行覆盖确认，因此应覆盖存档中已存在的文件。
+
+DeleteFiles 通知插件从给定的存档中删除文件。
+
+ConfigurePacker 允许插件打开一个配置对话框进行打包（而不是解包！）。当在Total 		Command的文件包对话框中按下“配置”按钮时，它就会被调用。
+
+
+以下可选函数用于在内存中打包：
+TotalCommander使用它来一步创建tar.plugin文件。例如，.bz2插件支持这些功能。大多数插件可以将多个文件打包到一个存档中，因此不需要实现这些功能。
+StartMemPack 告诉插件准备内部结构以便打包到内存中。
+PackToMem 向插件发送新数据（要打包的数据），并从中接收打包的数据。
+DoneMemPack 会在成功的PackToMem循环之后或用户中止打包时终止对内存的打包。
