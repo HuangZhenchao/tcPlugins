@@ -1,0 +1,19 @@
+LIBRARY
+EXPORTS
+    CloseArchive
+    ;DeleteFiles
+    GetPackerCaps
+    OpenArchive
+    OpenArchiveW
+    PackFiles
+    PackFilesW
+    PackSetDefaultParams
+    ProcessFile
+    ProcessFileW
+    ReadHeader
+    ReadHeaderEx
+    ReadHeaderExW
+    SetChangeVolProc
+    SetProcessDataProc
+    SetProcessDataProcW
+    ConfigurePacker

@@ -1,0 +1,256 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "windows.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian (Russia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "icon48x48.bmp"
+
+#endif    // Russian (Russia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""windows.h""\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OPTIONSDLG DIALOGEX 0, 0, 143, 118
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Catalog Maker Options"
+FONT 8, "MS Shell Dlg", 400, 0, 0xCC
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,37,103,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,90,103,50,14
+    CONTROL         "",IDC_TAB1,"SysTabControl32",WS_TABSTOP,3,4,137,95
+END
+
+IDD_VIEWDLG DIALOGEX 0, 0, 137, 83
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CLIPSIBLINGS | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "File size",IDC_CHK_SIZE,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,6,37,39,10
+    CONTROL         "Date",IDC_CHK_DATE,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,76,28,31,10
+    CONTROL         "Time",IDC_CHK_TIME,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,76,39,31,10
+    CONTROL         "Attributes",IDC_CHK_ATTR,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,76,50,47,10
+    CONTROL         "Full names",IDC_CHK_FULL_NAME,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,76,18,46,10
+    CONTROL         "File extension",IDC_CHK_EXT,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,6,27,60,10
+    CONTROL         "Files",IDC_CHK_FILE_NAME,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,6,15,29,10
+    LTEXT           "File types mask Ex.: *.doc;*.txt",IDC_STATIC,6,49,62,16
+    EDITTEXT        IDC_ED_FILE_TYPES,6,65,65,12,ES_AUTOHSCROLL
+    CONTROL         "Directories",IDC_CHK_DIRECTORIES,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,6,5,49,10
+    CONTROL         "Apply to dirs:",IDC_CHK_APPLY_TO_DIRS,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | BS_FLAT | WS_TABSTOP,76,4,59,10
+    CONTROL         "Dir size",IDC_CHECK_DIR_SIZE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,76,64,39,10
+END
+
+IDD_SORTDLG DIALOGEX 0, 0, 136, 83
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Descending sort",IDC_CHK_SORT_DESC,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,60,10,66,10
+    CONTROL         "Name",IDC_RB_SORT_NAME,"Button",BS_AUTORADIOBUTTON | BS_FLAT,10,10,34,10
+    CONTROL         "Extension",IDC_RB_SORT_EXT,"Button",BS_AUTORADIOBUTTON | BS_FLAT,10,22,46,10
+    CONTROL         "Size",IDC_RB_SORT_SIZE,"Button",BS_AUTORADIOBUTTON | BS_FLAT,10,36,40,8
+    CONTROL         "Date and time",IDC_RB_SORT_DATE,"Button",BS_AUTORADIOBUTTON | BS_FLAT,10,49,55,8
+    CONTROL         "Unsorted",IDC_RB_SORT_UNSORTED,"Button",BS_AUTORADIOBUTTON | BS_FLAT,10,63,45,10
+END
+
+IDD_FORMATDLG DIALOGEX 0, 0, 136, 83
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Indent for files",IDC_CHK_FORMAT_FILES,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,10,10,62,10
+    CONTROL         "Indent for files and dirs",IDC_CHK_FORMAT_ALL,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,10,25,88,10
+    LTEXT           "Indent size ",IDC_STATIC,10,40,38,8
+    EDITTEXT        IDC_ED_FORMAT_WIDTH,49,38,52,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Print extensions separately",IDC_CHK_FORMAT_EXT,"Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,10,55,99,10
+END
+
+IDD_ABOUTDLG DIALOGEX 0, 0, 136, 87
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Catalog Maker plugin",IDC_STATIC,42,6,73,8
+    LTEXT           "Copyright (C) 2002-2021",IDC_STATIC,42,18,84,8
+    LTEXT           "version 4.1.1",IDC_STATIC,42,30,84,8
+    LTEXT           "by Konstantin Polyakov",IDC_STATIC,42,42,84,8
+    LTEXT           "piligrim_pk@mail.ru",IDC_STATIC,42,54,75,8
+    CONTROL         IDB_BITMAP1,IDC_STATIC,"Static",SS_BITMAP,6,6,32,30
+    CONTROL         "You can help ($3) <a HREF=""https://www.paypal.me/catalogmaker"">PayPal</a> or <a HREF=""https://money.yandex.ru/to/41001851918213"">Yandex</a>",IDC_SYSLINK2,
+                    "SysLink",WS_TABSTOP,7,66,119,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_OPTIONSDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 140
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 115
+    END
+
+    IDD_VIEWDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 131
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 77
+    END
+
+    IDD_SORTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 129
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 76
+    END
+
+    IDD_FORMATDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 129
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 76
+    END
+
+    IDD_ABOUTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 126
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 4,1,0,0
+ PRODUCTVERSION 4,1,0,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "Catalog Maker plugin for Total Commander"
+            VALUE "FileVersion", "4.1.0.0"
+            VALUE "InternalName", "CatalogMaker"
+            VALUE "LegalCopyright", "Copyright (C) 2002-2020 by Konstantin Polyakov"
+            VALUE "OriginalFilename", "CatalogMaker.wcx"
+            VALUE "ProductName", "CatalogMaker"
+            VALUE "ProductVersion", "4.1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUTDLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_OPTIONSDLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_VIEWDLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
