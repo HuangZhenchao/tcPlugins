@@ -1,0 +1,11 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(510,5): warning MSB8028: 中间目录(Debug\)包含从另一个项目(Win32CEFTest.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  wlx_cef.cpp
+D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\MyCef\MyClient.h(118,9): warning C4996: '_itow': This function or variable may be unsafe. Consider using _itow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\wlx_cef.cpp(45,9): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\wlx_cef.cpp(49,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\wlx_cef.cpp(94,5): warning C4996: '_itow': This function or variable may be unsafe. Consider using _itow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1361,5): warning MSB8012: TargetPath(D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\wlx_cef.dll) 与 Linker 的 OutputFile 属性值(D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\wlx_cef.wlx)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1362,5): warning MSB8012: TargetExt(.dll) 与 Linker 的 OutputFile 属性值(.wlx)不匹配。这可能导致项目生成不正确。若要更正此问题，请确保 $(OutDir)、$(TargetName) 和 $(TargetExt) 属性值与 %(Link.OutputFile) 中指定的值匹配。
+  LINK : 没有找到 D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\wlx_cef.wlx 或上一个增量链接没有生成它；正在执行完全链接
+    正在创建库 D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\wlx_cef.lib 和对象 D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\wlx_cef.exp
+  Win32CEFTest.vcxproj -> D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\wlx_cef.dll

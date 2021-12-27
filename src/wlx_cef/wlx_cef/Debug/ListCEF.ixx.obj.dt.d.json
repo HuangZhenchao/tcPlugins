@@ -1,0 +1,10 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\codehub\\win32ceftest\\win32ceftest\\listcef.ixx",
+        "ProvidedModule": "",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
