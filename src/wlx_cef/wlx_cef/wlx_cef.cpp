@@ -65,11 +65,15 @@ BOOL APIENTRY DllMain(HANDLE hModule,
     case DLL_PROCESS_ATTACH:
     {                       
         hInst = (HINSTANCE)hModule;
+        //插件所在路径
         char ModuleFileName[MAX_PATH];
         GetModuleFileNameA((HMODULE)hModule, ModuleFileName, MAX_PATH);
         *(strrchr(ModuleFileName, '\\') + 1) = 0;
         ModuleFilePath = ModuleFileName;
+        //获取ini文件路径
         string iniPath = ModuleFilePath + "wlx_cef.ini";
+        //先从配置文件读取支持的后缀，以,为分隔符，拼接Detectstring，以及分别读取加载方式
+        //加载方式有两种：1直接本地访问，2搭建本地运行的服务器
         char strExtensions[1024];
         GetPrivateProfileStringA("Extensions", "ext", "HTML,TXT", strExtensions,1024, iniPath.c_str());
         
@@ -105,16 +109,17 @@ BOOL APIENTRY DllMain(HANDLE hModule,
     return TRUE;
 }
 
+//此方法输出参数DetectString是判断插件支持文件格式的字符串
 void __stdcall ListGetDetectString(char* DetectString, int maxlen)
 {
     char _detectstring[1024] = {0};
     sDetectstring.copy(_detectstring, sDetectstring.length(), 0);
     strlcpy(DetectString, _detectstring, maxlen);
 }
-
+//在DLL_PROCESS_ATTACH里已经读取ini里的ext和LoadURL到map
+//此方法取FileToLoad的ext，作为键从map查找LoadURL，若为空，直接加载本地文件，否则以自建服务器来实现功能。
 CefString GetLoadUrl(char* FileToLoad) {
-    //在DLL_PROCESS_ATTACH里读取ini里的ext和LoadURL到map
-    //取FileToLoad的ext，从map查找LoadURL，若为空，直接加载本地文件，否则以自建服务器来实现功能。
+    
     char cFileExt[1024];
     strlcpy(cFileExt, FileToLoad, 1024);
     strlcpy(cFileExt, strupr(strrchr(cFileExt, '.') + 1), 1024);
@@ -133,10 +138,13 @@ CefString GetLoadUrl(char* FileToLoad) {
     }
     return target_url;
 }
+//此方法必须实现
 
 HWND __stdcall ListLoad(HWND ParentWin, char* FileToLoad, int ShowFlags)
 {
+    //从文件获取URL
     CefString csLoadUrl = GetLoadUrl(FileToLoad); //L"http://www.baidu.com";
+    //CEF的初始化，以分离子进程执行体的方式运行
     CefMainArgs main_args(hInst);
     CefRefPtr<MyApp> myApp = CefRefPtr<MyApp>(new MyApp());
     CefRefPtr<MyClient> pMyClient=CefRefPtr<MyClient>(new MyClient());
@@ -152,10 +160,7 @@ HWND __stdcall ListLoad(HWND ParentWin, char* FileToLoad, int ShowFlags)
     HWND hWnd = pMyClient->CreateWnd(hInst, ParentWin); //hWndDll
     pMyClient->CreateBrowser(hWnd, csLoadUrl);//wlx_cef
     SetProp(hWnd,L"MyCefApp", (HANDLE)myApp.get());
-    WCHAR c[20] = { 0 };
-    _itow((DWORD)hWnd, c, 10);
-    //MessageBox(NULL, FileToLoadW, TEXT("ListLoad"), MB_OK);
-    //WritePrivateProfileStringW(L"test", L"ListLoad", csLoadUrl.c_str(), L"D:\\wlx_cef.ini");
+    
     return hWnd;
 }
 int __stdcall ListLoadNext(HWND ParentWin, HWND ListWin, char* FileToLoad, int ShowFlags) {
@@ -172,3 +177,7 @@ void __stdcall ListCloseWindow(HWND ListWin)
     DestroyWindow(ListWin);
     return;
 }
+//WCHAR c[20] = { 0 };
+//_itow((DWORD)hWnd, c, 10);
+//MessageBox(NULL, FileToLoadW, TEXT("ListLoad"), MB_OK);
+//WritePrivateProfileStringW(L"test", L"ListLoad", csLoadUrl.c_str(), L"D:\\wlx_cef.ini");

@@ -47,8 +47,7 @@ public:
 
             if (!(pMyCient && pMyCient->m_browser)) { break; }
 
-            //CefRefPtr<MyClient> client = pMyCient->myClient;
-            //CefRefPtr<CefBrowser> browser = client->GetBrowser();
+           
             CefWindowHandle hWndBrowser = pMyCient->m_browser->GetHost()->GetWindowHandle();
             RECT rect;
 
@@ -60,19 +59,6 @@ public:
         break;
         case WM_COMMAND:
         {
-            int wmId = LOWORD(wParam);
-            // ·ÖÎö²Ëµ¥Ñ¡Ôñ: 
-            switch (wmId)
-            {
-            case IDM_ABOUT:
-
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
         }
         break;
         case WM_PAINT:
