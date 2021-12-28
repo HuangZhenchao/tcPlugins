@@ -1,8 +1,3 @@
 ﻿  test.cpp
 D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\test\test.cpp(142,10): warning C4101: “FileToLoadW”: 未引用的局部变量
-  LINK : 没有找到 D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\test.exe 或上一个增量链接没有生成它；正在执行完全链接
   test.vcxproj -> D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\test.exe
-  
-D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\manifest\cefsimple.exe.manifest : general error c1010070: Failed to load and parse the manifest. 绯荤粺鎵句笉鍒版寚瀹氱殑璺緞銆?
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(156,5): error MSB3073: 命令“mt.exe -nologo -manifest "D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\manifest\cefsimple.exe.manifest" "D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\manifest\compatibility.manifest" -outputresource:"D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\test.exe";#1
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(156,5): error MSB3073: :VCEnd”已退出，代码为 31。

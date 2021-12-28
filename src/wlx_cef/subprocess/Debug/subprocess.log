@@ -1,2 +1,3 @@
 ﻿  subprocess.cpp
-D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\subprocess\subprocess.cpp(4,10): fatal error C1083: 无法打开包括文件: “../Win32CEFTest/stdafx.h”: No such file or directory
+  LINK : 没有找到 D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\subprocess.exe 或上一个增量链接没有生成它；正在执行完全链接
+  subprocess.vcxproj -> D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug\subprocess.exe

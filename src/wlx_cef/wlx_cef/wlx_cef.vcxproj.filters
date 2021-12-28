@@ -61,7 +61,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Win32CEFTest.rc">
+    <ResourceCompile Include="wlx_cef.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -69,7 +69,7 @@
     <Image Include="small.ico">
       <Filter>资源文件</Filter>
     </Image>
-    <Image Include="Win32CEFTest.ico">
+    <Image Include="wlx_cef.ico">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

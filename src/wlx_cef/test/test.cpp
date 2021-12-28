@@ -142,7 +142,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    WCHAR FileToLoadW[1024];
    ListGetDetectString(DetectString,1024);
    //awlcopy(FileToLoadW, DetectString, 1024);
-   char target_url[23] = "https://www.baidu.com";
+   char target_url[50] = "D:\\APPP\\TotalCMD_x86\\Plugins\\vote11.html";
    hWndChild=pListLoad(hWnd, target_url, 1);
 
    

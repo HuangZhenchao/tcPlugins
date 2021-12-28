@@ -98,7 +98,7 @@
       <AdditionalDependencies>libcef.lib;libcef_dll_wrapper.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mt.exe -nologo -manifest "D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\manifest\cefsimple.exe.manifest" "D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\manifest\compatibility.manifest" -outputresource:"$(OutDir)$(ProjectName).exe";#1</Command>
+      <Command>mt.exe -nologo -manifest "D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\wlx_cef\manifest\cefsimple.exe.manifest" "D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\wlx_cef\manifest\compatibility.manifest" -outputresource:"$(OutDir)$(ProjectName).exe";#1</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

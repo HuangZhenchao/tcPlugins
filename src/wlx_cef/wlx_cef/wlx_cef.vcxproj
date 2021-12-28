@@ -173,11 +173,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Win32CEFTest.rc" />
+    <ResourceCompile Include="wlx_cef.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico" />
-    <Image Include="Win32CEFTest.ico" />
+    <Image Include="wlx_cef.ico" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\base\cef_atomic_flag.h" />

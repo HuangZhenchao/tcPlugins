@@ -1,5 +1,5 @@
 #pragma once
-#include "../Win32CEFTest/stdafx.h"
+#include "../wlx_cef/stdafx.h"
 
 class MyApp : public CefApp, public CefRenderProcessHandler
 {

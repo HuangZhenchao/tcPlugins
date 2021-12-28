@@ -1,9 +1,10 @@
 #pragma once
 #include "stdafx.h"
 #include "resource.h"
+#include "../include/cef_parser.h"
 #define propString L"MyCefClient"
 //#define REQUIRE_UI_THREAD()   assert(CefCurrentlyOn(TID_UI));
-class MyClient : public CefClient, public CefLifeSpanHandler
+class MyClient : public CefClient, public CefLifeSpanHandler,public CefLoadHandler
 {
 public:
     HWND hWnd;
@@ -114,9 +115,7 @@ public:
         MyRegisterClass(hInstance);
         hWnd = CreateWindowW(L"main", L"test", WS_OVERLAPPEDWINDOW,
             0, 0, 800, 600, nullptr, nullptr, hInstance, nullptr);
-        WCHAR c[20] = { 0 };
-        _itow((DWORD)this, c, 10);
-        //MessageBox(NULL, c, TEXT("tidhi"), MB_OK);
+
         SetProp(hWnd, propString, this);
         ShowWindow(hWnd, SW_SHOWNORMAL);
         return hWnd;
@@ -125,7 +124,8 @@ public:
         MyRegisterClass(hInstance);
         RECT rect;
         GetClientRect(hWndParent, &rect);
-        CefRect cefRect(0, 0, rect.right - rect.left, rect.bottom - rect.top);
+        CefRect cefRect(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
+
         hWnd = CreateWindowW(L"main", L"test", WS_CHILD,
             rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, hWndParent, nullptr, hInstance, nullptr);
         SetProp(hWnd, propString, this);
@@ -137,13 +137,14 @@ public:
         CefWindowInfo window_info;
         RECT rect;
         GetClientRect(hWndParent, &rect);
-        CefRect cefRect(0, 0, rect.right - rect.left, rect.bottom - rect.top);
+        CefRect cefRect(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
         window_info.SetAsChild(hWndParent, cefRect);
         //window_info.SetAsPopup(NULL, "mycef");
 
         CefBrowserSettings browser_settings;
 
-        //CefString url = target_url;
+        CefString url = target_url;
+        
         CefBrowserHost::CreateBrowser(window_info, this, target_url, browser_settings, nullptr, nullptr);
         
     }
@@ -206,25 +207,58 @@ public:
     }
     virtual void OnAfterCreated(CefRefPtr<CefBrowser> browser) override {
         m_browser = browser;
+        //CefString url = browser->GetMainFrame()->GetURL();
+        //WritePrivateProfileStringW(L"test", L"OnAfterCreated", url.c_str(), L"D:\\wlx_cef.ini");
         //pMyClient->loadFlag = true;
         //PostMessage(hWnd, WM_SIZE, NULL, NULL);
-        //MessageBox(NULL, L"CreateBrowser", TEXT("tidhi"), MB_OK);
+        //MessageBox(NULL, browser->GetMainFrame()->GetURL().c_str(), TEXT("OnAfterCreated"), MB_OK);
+        SendMessage(hWnd, WM_SIZE, NULL, NULL);
     }
 
-public:
+
     virtual CefRefPtr<CefLifeSpanHandler> GetLifeSpanHandler() override
     {
         return this;
     }
+    virtual CefRefPtr<CefLoadHandler> GetLoadHandler() override { return this; }
     virtual void OnBeforeClose(CefRefPtr<CefBrowser> browser) override
     {
         CEF_REQUIRE_UI_THREAD();
         
         //m_browser.release();
         m_browser = nullptr;
-        WritePrivateProfileStringW(L"test", L"OnBeforeClose", L"经过", L"D:\\wlx_cef.ini");
+
 
     }
+public:
+    string GetDataURI(const std::string& data, const std::string& mime_type) {
+        return "data:" + mime_type + ";base64," +
+            CefURIEncode(CefBase64Encode(data.data(), data.size()), false)
+            .ToString();
+    }
+    //加载出错
+    
+    virtual void OnLoadError(CefRefPtr<CefBrowser> browser,
+        CefRefPtr<CefFrame> frame,
+        CefLoadHandler::ErrorCode errorCode,
+        const CefString& errorText,
+        const CefString& failedUrl) override
+    {
+
+        // Don't display an error for downloaded files.
+        if (errorCode == ERR_ABORTED)
+            return;
+
+        // Display a load error message using a data: URI.
+        std::stringstream ss;
+        ss << "<html><body bgcolor=\"white\">"
+            "<h2>Failed to load URL<br /> "
+            << std::string(failedUrl) << "<br />  with error " << std::string(errorText)
+            << " (" << errorCode << ").</h2></body></html>";
+
+        frame->LoadURL(GetDataURI(ss.str(), "text/html"));
+    }
+    
 private:
 
     IMPLEMENT_REFCOUNTING(MyClient);

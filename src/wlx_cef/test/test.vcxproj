@@ -96,7 +96,8 @@
       <AdditionalLibraryDirectories>D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>mt.exe -nologo -manifest "D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\manifest\cefsimple.exe.manifest" "D:\APPP\TotalCMD_x86\Plugins\src\wlx_cef\Win32CEFTest\manifest\compatibility.manifest" -outputresource:"$(OutDir)$(ProjectName).exe";#1</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
